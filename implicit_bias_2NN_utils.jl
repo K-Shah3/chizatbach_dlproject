@@ -94,7 +94,7 @@ figure(figsize=[2.5,2.5])
     savefig(name * "setting.pdf",bbox_inches="tight")
     
 figure(figsize=[2.5,2.5])
-    f1(x1,x2,t) = (1/m) * sum( Ws1[:,end,t] .* max.( Ws1[:,1:3,t] * [1;x1;x2], 0.0)) # (size 1 × n)
+    f1(x1,x2,t) = (1/m) * sum( Ws1[:,end,t] .* max.( Ws1[:,1:3,t] * [1;x1;x2], 0.0)) # (size 1 × n) # final prediction after training using the weights from after step t
     xs = -0.8:0.01:0.8
     tab1 = [f1(xs[i],xs[j],size(Ws1,3)) for i=1:length(xs), j=1:length(xs)]
     pcolormesh(xs', xs, tanh.(1000*tab1'),cmap="coolwarm",shading="gouraud",vmin=-1.0,vmax=1.0,edgecolor="face")
